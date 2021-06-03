@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8"></meta>
+<title>Prendas</title>
+
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<form id="myfrom">
+			<div class="row clearfix">
+				<div class="col-md-12 column" align="center">
+					<a style="border-bottom-color: gree" th:href="@{/prenda/irRegistrar}"
+						id="add-row" type="button"
+						class="btn btn-primary btn-md left-block"> <span
+						class="glyphicon glyphicon-plus"> Prenda</span>
+					</a> <a style="border-bottom-color: gree" th:href="@{/prenda/irBuscar}"
+						id="add-row" type="button"
+						class="btn btn-primary btn-md left-block"><span
+						class="glyphicon glyphicon-search"> Buscar</span>
+					</a>
+					<table class="table table-bordered table-hover table-striped"
+						id="tab_logic">
+						<thead>
+							<tr>
+								<th class="text-center">CODIGO</th>
+								<th class="text-center">TIPO</th>
+								<th class="text-center">OPERACION</th>
+								<th class="text-center">OPERACION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pre: ${listaPrendas}">
+								<td th:text="${pre.idPrenda}"></td>
+								<td th:text="${pre.namePrenda}"></td>
+								<td><a th:href="@{/prenda/eliminar?id=}+${pre.idPrenda}">Eliminar</a></td>
+								<td><a th:href="@{'/prenda/modificar/'}+${pre.idPrenda}">Modificar</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div th:if="${mensaje}" class="alert alert-danger">
+				<p th:text="${mensaje}"></p>
+			</div>
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
