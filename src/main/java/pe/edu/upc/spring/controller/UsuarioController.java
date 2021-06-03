@@ -37,8 +37,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/irRegistrar")
-	public String irPaginaRegistroClientes(Model model) {		
-		model.addAttribute("listaUsuarios", uService.listar());	
+	public String irPaginaRegistroUsuarios(Model model) {		
 		model.addAttribute("usuario", new Usuario());
 		return "usuario";
 	}	
@@ -46,8 +45,7 @@ public class UsuarioController {
 	@RequestMapping("/registrar")
 	public String registrar(@ModelAttribute Usuario objUsuario, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors())
-		{ 			
-			model.addAttribute("listaUsuarios", uService.listar());			
+		{ 					
 			return "usuario";
 		}
 		else {
@@ -62,16 +60,16 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
-		Optional<Usuario> objUsuario=uService.buscarId(id); //
-		if(objUsuario== null) {
+	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
+		throws ParseException
+	{
+		Optional<Usuario> objUsuario = uService.listarId(id);
+		if(objUsuario == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/usuario/listar";
-		}else {			
-			model.addAttribute("listaUsuarios", uService.listar());			
-			if(objUsuario.isPresent()) {
-				objUsuario.ifPresent(o->model.addAttribute("usuario",o));
-			}			
+		}
+		else {
+			model.addAttribute("usuario", objUsuario);
 			return "usuario";
 		}
 	}
