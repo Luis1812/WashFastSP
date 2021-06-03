@@ -14,22 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pe.edu.upc.spring.model.Administrador;
+import pe.edu.upc.spring.model.Local;
+import pe.edu.upc.spring.model.Repartidor;
 import pe.edu.upc.spring.model.Usuario;
 
-import pe.edu.upc.spring.service.IAdministradorService;
+import pe.edu.upc.spring.service.ILocalService;
+import pe.edu.upc.spring.service.IRepartidorService;
 import pe.edu.upc.spring.service.IUsuarioService;
 
-
 @Controller
-@RequestMapping("/administrador")
-public class AdministradorController {		
+@RequestMapping("/repartidor")
+public class RepartidorController {
 	
 	@Autowired
-	private IAdministradorService aService;		
+	private ILocalService lService;
+	
+	@Autowired
+	private IRepartidorService rService;
 	
 	@Autowired
 	private IUsuarioService uService;
+
+	
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -37,56 +43,61 @@ public class AdministradorController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoAdministradores(Map<String, Object> model) {
-		model.put("listaAdministradores", aService.listar());
-		return "listAdministradores";
+	public String irPaginaListadoRepartidores(Map<String, Object> model) {
+		model.put("listaRepartidores", rService.listar());
+		return "listRepartidores";
 	}
 	
 	@RequestMapping("/irRegistrar")
-	public String irPaginaRegistroAdministradores(Model model) {
+	public String irPaginaRegistroRepartidores(Model model) {
 		//
+		model.addAttribute("listaLocales", lService.listar());
 		model.addAttribute("listaUsuarios", uService.listar());
 		//
+		model.addAttribute("local", new Local());
 		model.addAttribute("usuario", new Usuario());
-		model.addAttribute("administrador", new Administrador());
+		model.addAttribute("repartidor", new Repartidor());
 		
-		return "administrador";
+		return "repartidor";
 	}
+	
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Administrador objAdministrador, BindingResult binRes, Model model) throws ParseException {
+	public String registrar(@ModelAttribute Repartidor objRepartidor, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors())
 		{ 
 			//
+			model.addAttribute("listaLocales", lService.listar());
 			model.addAttribute("listaUsuarios", uService.listar());
 			//
-			return "administrador";
+			return "repartidor";
 		}
 		else {
-			boolean flag = aService.insertar(objAdministrador);
+			boolean flag = rService.insertar(objRepartidor);
 			if(flag)
-				return "redirect:/administrador/listar";
+				return "redirect:/repartidor/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
-				return "redirect:/administrador/irRegistrar";
+				return "redirect:/repartidor/irRegistrar";
 			}
 		}
 	}
 	
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
-		Optional<Administrador> objAdministrador=aService.buscarId(id); //
-		if(objAdministrador== null) {
+		Optional<Repartidor> objRepartidor=rService.buscarId(id); //
+		if(objRepartidor== null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-			return "redirect:/administrador/listar";
+			return "redirect:/repartidor/listar";
 		}else {
 			//
+			model.addAttribute("listaLocales", lService.listar());
 			model.addAttribute("listaUsuarios", uService.listar());
 			//
-			if(objAdministrador.isPresent())
-				objAdministrador.ifPresent(o->model.addAttribute("administrador",o));
+			if(objRepartidor.isPresent())
+				objRepartidor.ifPresent(o->model.addAttribute("repartidor",o));
 						
-			return "administrador";
+			return "repartidor";
 		}
 	}
 	
@@ -94,28 +105,28 @@ public class AdministradorController {
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if (id!=null && id>0) {
-				aService.eliminar(id);
-				model.put("listaAdministradores", aService.listar());
+				rService.eliminar(id);
+				model.put("listaRepartidores", rService.listar());
+
 			}
 		}
 		catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaAdministradores", aService.listar());
+			model.put("listaRepartidores", rService.listar());
 		}
-		return "listAdministradores";
+		return "listRepartidores";
 	}
-	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object>model) {
-		model.put("listaAdministradores", aService.listar());
-		return "listAdministradores";
+		model.put("listaRepartidores", rService.listar());
+		return "listRepartidores";
 	}
 	
 	@RequestMapping("/listarId")
-	public String listarId(Map<String, Object> model, @ModelAttribute Administrador administrador) throws ParseException {
-		aService.listarId(administrador.getIdAdministrador());
-		return "listAdministradores";
-	}	
+	public String listarId(Map<String, Object> model, @ModelAttribute Repartidor repartidor) throws ParseException {
+		rService.listarId(repartidor.getIdRepartidor());
+		return "listRepartidores";
+	}
 	
 }
