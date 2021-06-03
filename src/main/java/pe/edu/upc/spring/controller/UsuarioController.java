@@ -19,7 +19,7 @@ import pe.edu.upc.spring.service.IUsuarioService;
 
 
 @Controller
-@RequestMapping("/cliente")
+@RequestMapping("/usuario")
 public class UsuarioController {		
 	
 	@Autowired
