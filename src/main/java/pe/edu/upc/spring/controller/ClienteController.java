@@ -1,6 +1,6 @@
 package pe.edu.upc.spring.controller;
 
-//import java.util.List;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.text.ParseException;
@@ -17,11 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.spring.model.MetodoPago;
 import pe.edu.upc.spring.model.Cliente;
-//import pe.edu.upc.spring.model.Usuario;
+import pe.edu.upc.spring.model.Usuario;
 
 import pe.edu.upc.spring.service.IMetodoPagoService;
 import pe.edu.upc.spring.service.IClienteService;
-//import pe.edu.upc.spring.service.IService;
+import pe.edu.upc.spring.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/cliente")
@@ -33,9 +33,9 @@ public class ClienteController {
 	@Autowired
 	private IClienteService cService;
 	
-//	@Autowired
-//	private IUsuarioService uService;
-//	
+	@Autowired
+	private IUsuarioService uService;
+
 	
 	
 	@RequestMapping("/bienvenido")
@@ -53,10 +53,10 @@ public class ClienteController {
 	public String irPaginaRegistroClientes(Model model) {
 		//
 		model.addAttribute("listaMetodopagos", mpService.listar());
-		//model.addAttribute("listaUsuarios", uService.listar());
+		model.addAttribute("listaUsuarios", uService.listar());
 		//
 		model.addAttribute("metodopago", new MetodoPago());
-//		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("cliente", new Cliente());
 		
 		return "cliente";
@@ -70,7 +70,7 @@ public class ClienteController {
 		{ 
 			//
 			model.addAttribute("listaMetodopagos", mpService.listar());
-//			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaUsuarios", uService.listar());
 			//
 			return "cliente";
 		}
@@ -95,7 +95,7 @@ public class ClienteController {
 		}else {
 			//
 			model.addAttribute("listaMetodopagos", mpService.listar());
-//			model.addAttribute("listaUsuarios", uService.listar());
+			model.addAttribute("listaUsuarios", uService.listar());
 			//
 			if(objCliente.isPresent())
 				objCliente.ifPresent(o->model.addAttribute("cliente",o));

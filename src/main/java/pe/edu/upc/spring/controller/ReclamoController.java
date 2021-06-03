@@ -1,6 +1,6 @@
 package pe.edu.upc.spring.controller;
 
-//import java.util.List;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.text.ParseException;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-//import pe.edu.upc.spring.model.Local;
+import pe.edu.upc.spring.model.Local;
 import pe.edu.upc.spring.model.Cliente;
 import pe.edu.upc.spring.model.Reclamo;
 
-//import pe.edu.upc.spring.service.ILocalService;
+import pe.edu.upc.spring.service.ILocalService;
 import pe.edu.upc.spring.service.IClienteService;
 import pe.edu.upc.spring.service.IReclamoService;
 
@@ -27,9 +27,9 @@ import pe.edu.upc.spring.service.IReclamoService;
 @RequestMapping("/reclamo")
 public class ReclamoController {
 	
-//	@Autowired
-//	private ILocalService lService;
-//	
+	@Autowired
+	private ILocalService lService;
+	//	
 	@Autowired
 	private IClienteService cService;
 	
@@ -52,10 +52,10 @@ public class ReclamoController {
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistroReclamo(Model model) {
 		//
-//		model.addAttribute("listaLocales", lService.listar());
+		model.addAttribute("listaLocales", lService.listar());
 		model.addAttribute("listaClientes", cService.listar());
 		//
-//		model.addAttribute("local", new Local());
+		model.addAttribute("local", new Local());
 		model.addAttribute("cliente", new Cliente());
 		model.addAttribute("reclamo", new Reclamo());
 		
@@ -69,7 +69,7 @@ public class ReclamoController {
 		if (binRes.hasErrors())
 		{ 
 			//
-//			model.addAttribute("listaLocales", lService.listar());
+			model.addAttribute("listaLocales", lService.listar());
 			model.addAttribute("listaClientes", cService.listar());
 			//
 			return "reclamo";
@@ -94,7 +94,7 @@ public class ReclamoController {
 			return "redirect:/reclamo/listar";
 		}else {
 			//
-//			model.addAttribute("listaLocales", lService.listar());
+			model.addAttribute("listaLocales", lService.listar());
 			model.addAttribute("listaClientes", cService.listar());
 			//
 			if(objReclamo.isPresent())
