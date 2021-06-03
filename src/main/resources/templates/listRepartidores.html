@@ -51,15 +51,15 @@
 							</thead>
 							
 							<tbody>
-								<tr th:each="c:${listaRepartidores}">
-									<td th:text="${c.idRepartidor}"></td>
-									<td th:text="${c.usuario.nameUsuario}"></td>
-									<td th:text="${c.local.nameLocal}"></td>					
- 									<td th:text="${c.codLicencia}"></td>
- 									<td th:text="${c.placaMoto}"></td>
+								<tr th:each="r:${listaRepartidores}">
+									<td th:text="${r.idRepartidor}"></td>
+									<td th:text="${r.usuario.nameUsuario}"></td>
+									<td th:text="${r.local.nameLocal}"></td>					
+ 									<td th:text="${r.codLicencia}"></td>
+ 									<td th:text="${r.placaMoto}"></td>
  									
-									<td><a th:href="@{/repartidor/eliminar?id=}+${c.idRepartidor}">Eliminar</a></td>
-									<td><a th:href="@{'/repartidor/modificar/'+${c.idRepartidor}}">Modificar</a></td>
+									<td><a th:href="@{/repartidor/eliminar?id=}+${r.idRepartidor}">Eliminar</a></td>
+									<td><a th:href="@{'/repartidor/modificar/'+${r.idRepartidor}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>
