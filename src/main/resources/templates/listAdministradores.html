@@ -48,11 +48,11 @@
 							</thead>
 							
 							<tbody>
-								<tr th:each="c:${listaAdministradores}">
-									<td th:text="${c.idAdministrador}"></td>
-									<td th:text="${c.usuario.nameUsuario}"></td>	
-									<td><a th:href="@{/administrador/eliminar?id=}+${c.idAdministrador}">Eliminar</a></td>
-									<td><a th:href="@{'/administrador/modificar/'+${c.idAdministrador}}">Modificar</a></td>
+								<tr th:each="a:${listaAdministradores}">
+									<td th:text="${a.idAdministrador}"></td>
+									<td th:text="${a.usuario.nameUsuario}"></td>	
+									<td><a th:href="@{/administrador/eliminar?id=}+${a.idAdministrador}">Eliminar</a></td>
+									<td><a th:href="@{'/administrador/modificar/'+${a.idAdministrador}}">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

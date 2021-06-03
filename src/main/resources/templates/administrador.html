@@ -38,7 +38,7 @@
 					
 						<label for="usuario" class="col-sm-2 col-form-label"></label> USUARIO:
 						<select class= "from-control" th:field= "*{usuario.idUsuario}">
-						<option th:each="u: ${listaUsuarios}" th:value= "${u.idUsuario}" th:text="${u.nameUsuario}"
+						<option th:each="u:${listaUsuarios}" th:value= "${u.idUsuario}" th:text="${u.nameUsuario}"
 								th:selected="(${u.idUsuario}== *{usuario.idUsuario})">
 						</option>
 						</select>
