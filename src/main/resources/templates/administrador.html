@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Administrador</title>	
+
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/administrador.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/administrador/registrar}" method="post" th:object="${administrador}">
+				<div class="form-group">
+				
+					<label for="idAdministrador">ID:</label>
+					<input type="text" class="form-control" th:field="*{idAdministrador}"></input>
+					
+					<div class="form-group">
+					
+					
+						<label for="usuario" class="col-sm-2 col-form-label"></label> USUARIO:
+						<select class= "from-control" th:field= "*{usuario.idUsuario}">
+						<option th:each="u: ${listaUsuarios}" th:value= "${u.idUsuario}" th:text="${u.nameUsuario}"
+								th:selected="(${u.idUsuario}== *{usuario.idUsuario})">
+						</option>
+						</select>
+						
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/administrador/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>
