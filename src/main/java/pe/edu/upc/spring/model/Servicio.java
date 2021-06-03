@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="servicio")
+@Table(name="Servicio")
 public class Servicio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,16 +25,15 @@ public class Servicio implements Serializable {
 	@Column(name="montoServicio", nullable=false)
 	private int montoServicio;
 
+	public Servicio() {
+		super();
+	}
+	
 	public Servicio(int idServicio, String tipoServicio, int montoServicio) {
 		super();
 		this.idServicio = idServicio;
 		this.tipoServicio = tipoServicio;
 		this.montoServicio = montoServicio;
-	}
-
-	public Servicio() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdServicio() {
@@ -60,5 +59,4 @@ public class Servicio implements Serializable {
 	public void setMontoServicio(int montoServicio) {
 		this.montoServicio = montoServicio;
 	}
-	
 }
