@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8"></meta>
+<title>Servicio</title>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<form th:action="@{/servicio/registrar}" method="post" th:object="${servicio}">
+			<div class="form-group">
+				<label for="idServicio">ID:</label> 
+				<input type="text" class="form-control" th:field="*{idServicio}" disabled="false"></input>
+
+				<div class="form-group">
+					<label for="tipoServicio">TIPO DE SERVICIO:</label> 
+					<input type="text" class="form-control" th:field="*{tipoServicio}" id="tipoServicio"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('tipoServicio')}" th:errors="*{tipoServicio}">
+					</div>
+					
+					<label for="montoServicio">MONTO DE SERVICIO:</label> 
+					<input type="text" class="form-control" th:field="*{montoServicio}" id="montoServicio"></input>
+
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('montoServicio')}" th:errors="*{montoServicio}">
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/servicio/listar" class="btn btn-danger">Cancelar</a>
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
