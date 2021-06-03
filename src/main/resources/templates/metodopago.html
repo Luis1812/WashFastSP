@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Metodo de Pago</title>	
+
+		<script type="text/javascript" src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>		
+
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>		
+
+		<script
+			src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+
+		<script src="code.jquery.com/jquery-1.11.1.min.js">
+		</script>		
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/metodopago/registrar}" method="post" th:object="${metodopago}">
+				<div class="form-group">
+					<label for="idmetodopago">ID:</label>
+					<input type="text" class="form-control" th:field="*{idMetodopago}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">Metodo:</label>
+						<input type="text" class="form-control" th:field="*{nameMetodopago}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameMetodopago')}"
+						th:errors="*{nameMetodopago}">
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/metodopago/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>

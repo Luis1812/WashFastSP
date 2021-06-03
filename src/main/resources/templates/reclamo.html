@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Reclamo</title>	
+
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/reclamo/registrar}" method="post" th:object="${reclamo}">
+				<div class="form-group">
+				
+					<label for="idReclamo">ID:</label>
+					<input type="text" class="form-control" th:field="*{idReclamo}"></input>
+					
+					<div class="form-group">
+					
+						<label for="detalle">Detalle:</label>
+						<input type="text" class="form-control" th:field="*{detailReclamo}" id="detalle"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('detailReclamo')}"
+						th:errors="*{detailReclamo}">
+						</div>
+						
+						
+						<label for="fechaReclamo">FECHA:</label>
+						<input type="date" class="form-control" th:field="*{detailDateReclamo}" id="fechaReclamo"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('detailDateReclamo')}"
+						th:errors="*{detailDateReclamo}">
+						</div>
+						
+						
+						<label for="cliente" class="col-sm-2 col-form-label"></label> CLIENTE:
+						<select class= "from-control" th:field= "*{cliente.idCliente}">
+						<option th:each="c: ${listaClientes}" th:value= "${c.idCliente}" th:text="${c.idCliente}"
+								th:selected="(${c.idCliente}== *{c.idCliente})">
+						</option>
+						</select>
+						
+						
+						<label for="local" class="col-sm-2 col-form-label"></label> LOCAL:
+						<select class= "from-control" th:field= "*{local.idLocal}">
+							<option th:each="l: ${listaLocales}" th:value= "${l.idLocal}" th:text="${l.nameLocal}" 
+								th:selected="(${l.idLocal}== *{local.idLocal})">
+							</option>
+						</select>
+						
+						
+						
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/reclamo/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>
