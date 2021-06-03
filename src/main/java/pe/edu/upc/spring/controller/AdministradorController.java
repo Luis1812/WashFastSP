@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pe.edu.upc.spring.model.Local;
-import pe.edu.upc.spring.service.ILocalService;
+import pe.edu.upc.spring.model.Administrador;
+import pe.edu.upc.spring.service.IAdministradorService;
 
 
 @Controller
-@RequestMapping("/local")
-public class LocalController {		
+@RequestMapping("/administrador")
+public class AdministradorController {		
 	
 	@Autowired
-	private ILocalService lService;		
+	private IAdministradorService aService;		
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -31,30 +31,30 @@ public class LocalController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoLocales(Map<String, Object> model) {
-		model.put("listaLocales", lService.listar());
-		return "listLocals";
+	public String irPaginaListadoAdministradores(Map<String, Object> model) {
+		model.put("listaAdministradores", aService.listar());
+		return "listAdministrators";
 	}
 	
 	@RequestMapping("/irRegistrar")
-	public String irPaginaRegistroLocales(Model model) {		
-		model.addAttribute("local", new Local());
-		return "local";
+	public String irPaginaRegistroAdministradores(Model model) {		
+		model.addAttribute("administrador", new Administrador());
+		return "administrador";
 	}	
 
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Local objLocal, BindingResult binRes, Model model) throws ParseException {
+	public String registrar(@ModelAttribute Administrador objAdministrador, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors())
 		{ 					
-			return "local";
+			return "administrador";
 		}
 		else {
-			boolean flag = lService.insertar(objLocal);
+			boolean flag = aService.insertar(objAdministrador);
 			if(flag)
-				return "redirect:/local/listar";
+				return "redirect:/administrador/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
-				return "redirect:/local/irRegistrar";
+				return "redirect:/administrador/irRegistrar";
 			}
 		}		
 	}
@@ -63,14 +63,14 @@ public class LocalController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException
 	{
-		Optional<Local> objLocal = lService.listarId(id);
-		if(objLocal == null) {
+		Optional<Administrador> objAdministrador = aService.listarId(id);
+		if(objAdministrador == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-			return "redirect:/local/listar";
+			return "redirect:/administrador/listar";
 		}
 		else {
-			model.addAttribute("local", objLocal);
-			return "local";
+			model.addAttribute("administrador", objAdministrador);
+			return "administrador";
 		}
 	}
 	
@@ -78,28 +78,28 @@ public class LocalController {
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if (id!=null && id>0) {
-				lService.eliminar(id);
-				model.put("listaLocales", lService.listar());
+				aService.eliminar(id);
+				model.put("listaAdministradores", aService.listar());
 			}
 		}
 		catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaLocales", lService.listar());
+			model.put("listaAdministradores", aService.listar());
 		}
-		return "listLocals";
+		return "listAdministrators";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object>model) {
-		model.put("listaLocales", lService.listar());
-		return "listLocals";
+		model.put("listaAdministradores", aService.listar());
+		return "listAdministrators";
 	}
 	
 	@RequestMapping("/listarId")
-	public String listarId(Map<String, Object> model, @ModelAttribute Local local) throws ParseException {
-		lService.listarId(local.getIdLocal());
-		return "listLocals";
+	public String listarId(Map<String, Object> model, @ModelAttribute Administrador administrador) throws ParseException {
+		aService.listarId(administrador.getIdAdministrador());
+		return "listAdministrators";
 	}	
 	
 }
