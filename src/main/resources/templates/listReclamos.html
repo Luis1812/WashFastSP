@@ -61,7 +61,7 @@
 									<td th:text="${r.detailReclamo}"></td>
 									<td th:text="${#dates.format(r.detailDateReclamo, 'dd/MM/yyyy')}"></td>
 									<td th:text="${r.cliente.idCliente}"></td>
-									<td th:text="${r.local.nameLocal}"></td>
+									<td th:text="${r.local.nombreLocal}"></td>
 									
 									<td><a th:href="@{/reclamo/eliminar?id=}+${r.idReclamo}">Eliminar</a></td>
 									<td><a th:href="@{'/reclamo/modificar/'+${r.idReclamo}}">Modificar</a></td>
