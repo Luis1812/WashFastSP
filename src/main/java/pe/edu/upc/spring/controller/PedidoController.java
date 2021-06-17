@@ -44,7 +44,7 @@ public class PedidoController {
 	public String irPaginaRegistroPedido(Model model) {
 		model.addAttribute("listaDetalles", dService.listar());
 		
-		model.addAttribute("deatalle", new Detalle());
+		model.addAttribute("detalle", new Detalle());
 		model.addAttribute("pedido", new Pedido());
 		return "pedido";
 	}
@@ -53,7 +53,7 @@ public class PedidoController {
 	public String registrar(@ModelAttribute Pedido objPedido, BindingResult binRes, Model model){
 		if (binRes.hasErrors())
 		{ 
-			model.addAttribute("listaDetalle", dService.listar());
+			model.addAttribute("listaDetalles", dService.listar());
 			return "pedido";
 		}
 		else {
@@ -74,7 +74,7 @@ public class PedidoController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/pedido/listar";
 		}else {
-			model.addAttribute("listaDetalle",dService.listar());
+			model.addAttribute("listaDetalles",dService.listar());
 			if(objPedido.isPresent())
 				objPedido.ifPresent(o->model.addAttribute("PEDIDO",o));
 			return "pedido";
@@ -86,12 +86,12 @@ public class PedidoController {
 		try {
 			if (id!=null && id>0) {
 				pService.eliminar(id);
-				model.put("listaPedido", pService.listar());
+				model.put("listaPedidos", pService.listar());
 			}
 		}catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaPedido", pService.listar());
+			model.put("listaPedidos", pService.listar());
 		}
 		return "listPedidos";
 	}
