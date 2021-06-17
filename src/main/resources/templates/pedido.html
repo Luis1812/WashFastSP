@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Pedido</title>	
+
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/pedido/registrar}" method="post" th:object="${pedido}">
+				<div class="form-group">
+				
+					<label for="idPedido">ID:</label>
+					<input type="text" class="form-control" th:field="*{idPedido}"></input>
+					
+					<div class="form-group">
+					
+						<label for="fechaPedido">FECHA DE PEDIDO:</label>
+						<input type="date" class="form-control" th:field="*{fechaPedido}" id="fechaPedido"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaPedido')}"
+						th:errors="*{fechaPedido}">
+						</div>
+						
+						
+						<label for="fechaEntrega">FECHA DE ENTREGA:</label>
+						<input type="date" class="form-control" th:field="*{fechaEntrega}" id="fechaEntrega"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaEntrega')}"
+						th:errors="*{fechaEntrega}">
+						</div>
+						
+						
+						<label for="cliente">CLIENTE:</label>
+						<select class= "form-control" th:field= "*{cliente.idCliente}">
+							<option th:each="c: ${listaClientes}" th:value= "${c.idCliente}" th:text="${c.idCliente}"
+									th:selected="(${c.idCliente}== *{c.idCliente})">
+							</option>
+						</select>
+						
+						
+						<label for="monto">MONTO:</label>
+						<input type="number" class="form-control" th:field="*{monto}" id="monto"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('monto')}"
+						th:errors="*{monto}">
+						</div>
+	
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/pedido/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>
