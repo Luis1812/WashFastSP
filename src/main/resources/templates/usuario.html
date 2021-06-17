@@ -35,25 +35,28 @@
 					
 					<div class="form-group">
 					
-						<label for="correo">CORREO:</label> 
- 						<input type="email" class="form-control" th:field="*{correo}" id="correo"></input> 
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('correo')}"
- 						th:errors="*{correo}">
- 						</div>
- 						
 						
+							
 						<label for="nombreCompleto">NOMBRES COMPLETOS:</label> 
 						<input type="text" class="form-control" th:field="*{nombreCompleto}" id="nombreCompleto"></input> 
  						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreCompleto')}"
  						th:errors="*{nombreCompleto}"> 
  						</div>  																
-
+						
+					
 
 						<label for="usuario">USUARIO:</label> 
  						<input type="text" class="form-control" th:field="*{usuario}" id="usuario"></input> 
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('usuario')}"
  						th:errors="*{usuario}">
  						</div>
+						
+						<label for="correo">CORREO:</label> 
+ 						<input type="email" class="form-control" th:field="*{correo}" id="correo"></input> 
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('correo')}"
+ 						th:errors="*{correo}">
+ 						</div>
+ 											
 						
 						
  						<label for="contrasena">CONTRASEÑA:</label> 
@@ -77,10 +80,10 @@
  						</div>
  						
  						
- 						<label for="direccion">TELEFONO:</label> 
-						<input type="text" class="form-control" th:field="*{direccion}" id="direccion"></input> 
- 						<div class="alert alert-danger" th:if="${#fields.hasErrors('direccion')}"
- 						th:errors="*{direccion}"> 
+ 						<label for="telefono">TELEFONO:</label> 
+						<input type="text" class="form-control" th:field="*{telefono}" id="telefono"></input> 
+ 						<div class="alert alert-danger" th:if="${#fields.hasErrors('telefono')}"
+ 						th:errors="*{telefono}"> 
  						</div> 						 						  
 						
 					</div>
