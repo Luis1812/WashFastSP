@@ -61,7 +61,7 @@ public class LocalController {
 	
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
-		throws ParseException
+		throws ParseException 
 	{
 		Optional<Local> objLocal = lService.listarId(id);
 		if(objLocal == null) {
