@@ -52,14 +52,14 @@
 						<label for="cliente" class="col-sm-2 col-form-label"></label> CLIENTE:
 						<select class= "from-control" th:field= "*{cliente.idCliente}">
 						<option th:each="c: ${listaClientes}" th:value= "${c.idCliente}" th:text="${c.idCliente}"
-								th:selected="(${c.idCliente}== *{c.idCliente})">
+								th:selected="(${c.idCliente}== *{cliente.idCliente})">
 						</option>
 						</select>
 						
 						
 						<label for="local" class="col-sm-2 col-form-label"></label> LOCAL:
 						<select class= "from-control" th:field= "*{local.idLocal}">
-							<option th:each="l: ${listaLocales}" th:value= "${l.idLocal}" th:text="${l.nameLocal}" 
+							<option th:each="l: ${listaLocales}" th:value= "${l.idLocal}" th:text="${l.nombreLocal}" 
 								th:selected="(${l.idLocal}== *{local.idLocal})">
 							</option>
 						</select>
