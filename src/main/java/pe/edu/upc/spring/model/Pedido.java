@@ -34,7 +34,6 @@ public class Pedido implements Serializable{
 
 	public Pedido() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Pedido(int idPedido, Date fechaPedido, Date fechaEntrega, Cliente cliente, float monto) {
