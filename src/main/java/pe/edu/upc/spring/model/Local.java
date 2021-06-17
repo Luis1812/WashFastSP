@@ -29,7 +29,6 @@ public class Local implements Serializable{
 
 	public Local() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Local(int idLocal, String nombreLocal, String direccionLocal, String telefonoLocal) {

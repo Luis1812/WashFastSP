@@ -37,7 +37,6 @@ public class Repartidor implements Serializable {
 
 	public Repartidor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Repartidor(int idRepartidor, Usuario usuario, Local local, String codLicencia, String placaMoto) {
