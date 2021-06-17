@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Detalle</title>	
+
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/detalle/registrar}" method="post" th:object="${detalle}">
+				<div class="form-group">
+				
+					<label for="idDetalle">ID:</label>
+					<input type="text" class="form-control" th:field="*{idDetalle}"></input>
+					
+					<div class="form-group">
+					
+						<label for="cantidad">CANTIDAD:</label>
+						<input type="number" class="form-control" th:field="*{cantidad}" id="cantidad"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('cantidad')}"
+						th:errors="*{cantidad}">
+						</div>
+					
+					
+						<label for="prenda">PRENDA:</label>
+						<select class= "form-control" th:field= "*{prenda.idPrenda}">
+							<option th:each="pr: ${listaPrendas}" th:value= "${pr.idPrenda}" th:text="${pr.namePrenda}"
+									th:selected="(${pr.idPrenda}== *{prenda.idPrenda})">
+							</option>
+						</select>
+						
+						
+						<label for="servicio">SERVICIO:</label>
+						<select class= "form-control" th:field= "*{servicio.idServicio}">
+							<option th:each="s: ${listaServicios}" th:value= "${s.idServicio}" th:text="${s.tipoServicio}" 
+									th:selected="(${s.idServicio}== *{servicio.idServicio})">
+							</option>
+						</select>
+						
+						
+						<label for="pedido">PEDIDO:</label>
+						<select class= "form-control" th:field= "*{pedido.idPedido}">
+							<option th:each="pe: ${listaPedidos}" th:value= "${pe.idPedido}" th:text="${pe.idPedido}" 
+									th:selected="(${pe.idPedido}== *{pedido.idPedido})">
+							</option>
+						</select>
+					
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/detalle/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>
