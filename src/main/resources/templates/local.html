@@ -43,7 +43,7 @@
  						
 						
 						<label for="direccion">DIRECCION: </label> 
-						<input type="text" class="form-control" th:field="*{direcionLocal}" id="direccion"></input> 
+						<input type="text" class="form-control" th:field="*{direccionLocal}" id="direccion"></input> 
  						<div class="alert alert-danger" th:if="${#fields.hasErrors('direccionLocal')}"
  						th:errors="*{direccionLocal}"> 
  						</div>  																
