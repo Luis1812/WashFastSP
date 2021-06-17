@@ -22,8 +22,9 @@
 				<div class="container">
 					
 					<div class="navbar-header">
-						<a class="navbar-brand" th:href="@{/metodopago/bienvenido}">WASHFAST</a>
-					</div>
+						<a class="navbar-brand" th:href="@{/welcome/bienvenido}">WASHFAST</a>
+<!-- 						<a class="navbar-brand" th:href="@{/metodopago/bienvenido}">WASHFAST</a> -->
+					</div>s
 					
 					<div id="navbar" class="collapse navbar-collapse">
 					
@@ -31,14 +32,17 @@
 						
 							<li class="active"><a th:href="@{/servicio/listar}">Servicio</a></li>
 							<li class="active"><a th:href="@{/metodopago/listar}">Metodo De Pago</a></li>
-							<li class="active"><a th:href="@{/administrador/listar}">Administrador</a></li>
-							<li class="active"><a th:href="@{/repartidor/listar}">Reaprtidor</a></li>
 							<li class="active"><a th:href="@{/cliente/listar}">Cliente</a></li>
-							<li class="active"><a th:href="@{/local/listar}">Local</a></li>
+							<li class="active"><a th:href="@{/administrador/listar}">Administrador</a></li>
+							<li class="active"><a th:href="@{/pedido/listar}">Pedido</a></li>
 							<li class="active"><a th:href="@{/reclamo/listar}">Reclamo</a></li>
 							<li class="active"><a th:href="@{/prenda/listar}">Prenda</a></li>
 							<li class="active"><a th:href="@{/usuario/listar}">Usuario</a></li>
-	
+							<li class="active"><a th:href="@{/local/listar}">Local</a></li>
+							<li class="active"><a th:href="@{/repartidor/listar}">Repartidor</a></li>
+							<li class="active"><a th:href="@{/detalle/listar}">Detalle</a></li>
+							<li><a></a>       </li>
+		                    <li class="btn btn-danger" > <a th:href="@{/login}" >Salir</a></li>
 						</ul>
 						 
 					</div>
