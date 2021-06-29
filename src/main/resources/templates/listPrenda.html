@@ -42,7 +42,8 @@
 						<thead>
 							<tr>
 								<th class="text-center">CODIGO</th>
-								<th class="text-center">TIPO</th>
+								<th class="text-center">PRENDA</th>
+								<th class="text-center">MONTO DE PRENDA</th>
 								<th class="text-center">OPERACION</th>
 								<th class="text-center">OPERACION</th>
 							</tr>
@@ -51,6 +52,7 @@
 							<tr th:each="pre: ${listaPrendas}">
 								<td th:text="${pre.idPrenda}"></td>
 								<td th:text="${pre.namePrenda}"></td>
+								<td th:text="${pre.montoPrenda}"></td>
 								<td><a th:href="@{/prenda/eliminar?id=}+${pre.idPrenda}">Eliminar</a></td>
 								<td><a th:href="@{'/prenda/modificar/'}+${pre.idPrenda}">Modificar</a></td>
 							</tr>

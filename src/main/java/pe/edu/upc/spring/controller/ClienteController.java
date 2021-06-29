@@ -1,6 +1,6 @@
 package pe.edu.upc.spring.controller;
 
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.text.ParseException;
@@ -133,24 +133,5 @@ public class ClienteController {
 		return "listClients";
 	}
 	
-//	@RequestMapping("/irBuscar")
-//	public String irBuscar(Model model) {
-//		model.addAttribute("cliente", new Cliente());
-//		return "buscar";
-//	}
-//	
-//	@RequestMapping("/buscar")
-//	public String buscar(Map<String, Object> model, @ModelAttribute Cliente cliente) throws ParseException {
-//		List<Cliente> listaClientes;
-//		cliente.setIdCliente(cliente.getIdCliente());
-//		listaClientes= cService.buscarId(cliente.getIdCliente());
-//		
-//		if(listaMascotas.isEmpty()) {
-//			model.put("mensaje", "No existen coincidencias");
-//		}
-//		// else
-//			model.put("listaMascotas", listaMascotas);
-//		return "buscar";
-//	}
 	
 }

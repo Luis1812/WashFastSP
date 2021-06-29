@@ -96,4 +96,9 @@ public class PrendaController {
 		return "listPrenda";
 	}
 
+	@RequestMapping("/listarId")
+	public String listarId(Map<String, Object> model, @ModelAttribute Prenda prenda) throws ParseException {
+		pService.listarId(prenda.getIdPrenda());
+		return "listPrenda";
+	}	
 }

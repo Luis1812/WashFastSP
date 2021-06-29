@@ -91,4 +91,10 @@ import pe.edu.upc.spring.service.IMetodoPagoService;
 		model.put("listaMetodopagos", mpService.listar());
 		return "listMetodopago";
 	}
-}
+	
+	@RequestMapping("/listarId")
+	public String listarId(Map<String, Object> model, @ModelAttribute MetodoPago metodoPago) throws ParseException {
+		mpService.listarId(metodoPago.getIdMetodopago());
+		return "listMetodopago";
+		}
+	}

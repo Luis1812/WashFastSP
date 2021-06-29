@@ -38,19 +38,17 @@
 							<span class="glyphicon glyphicon-plus"> PEDIDO</span>
 						</a>
 						
-<!-- 						<a style="border-bottom-color: green" th:href="@{/pet/irBuscar}" -->
-<!-- 							id="add-row" type="button" class="btn btn-primary btn-md left block"> -->
-<!-- 							<span class="glyphicon gliphicon-search"> Buscar </span> -->
-<!-- 						</a> -->
-						
 						<table class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>
 									<th class="text-center">ID</th>
 									<th class="text-center">FECHA PEDIDO</th>
 									<th class="text-center">FECHA ENTREGA</th>
+									<th class="text-center">CANTIDAD</th>
 									<th class="text-center">CLIENTE</th>
-									<th class="text-center">MONTO</th>
+									<th class="text-center">DETALLE</th>
+									<th class="text-center">REPARTIDOR</th>
+									<th class="text-center">MONTO FINAL</th>
 									<th class="text-center">OPERACION</th>
 									<th class="text-center">OPERACION</th>
 								</tr>
@@ -58,12 +56,15 @@
 							
 							<tbody>
 								<tr th:each="p:${listaPedidos}">
+								
 									<td th:text="${p.idPedido}"></td>
 									<td th:text="${#dates.format(p.fechaPedido, 'dd/MM/yyyy')}"></td>
 									<td th:text="${#dates.format(p.fechaEntrega, 'dd/MM/yyyy')}"></td>
+									<td th:text="${p.cantidad}"></td>
 									<td th:text="${p.cliente.idCliente}"></td>
-									<td th:text="${p.monto}"></td>
-									
+									<td th:text="${p.detalle.idDetalle}"></td>
+									<td th:text="${p.repartidor.idRepartidor}"></td>
+									<td th:text="${p.detalle.monto*p.cantidad+2}"></td>
 									<td><a th:href="@{/pedido/eliminar?id=}+${p.idPedido}">Eliminar</a></td>
 									<td><a th:href="@{'/pedido/modificar/'+${p.idPedido}}">Modificar</a></td>
 								</tr>

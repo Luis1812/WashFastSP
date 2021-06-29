@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.edu.upc.spring.model.Cliente;
 import pe.edu.upc.spring.model.Detalle;
 import pe.edu.upc.spring.model.Pedido;
+import pe.edu.upc.spring.model.Repartidor;
+import pe.edu.upc.spring.service.IClienteService;
 import pe.edu.upc.spring.service.IDetalleService;
 import pe.edu.upc.spring.service.IPedidoService;
+import pe.edu.upc.spring.service.IRepartidorService;
 
 @Controller
 @RequestMapping("/pedido")
@@ -28,6 +32,12 @@ public class PedidoController {
 	
 	@Autowired
 	private IDetalleService dService;
+	
+	@Autowired
+	private IRepartidorService rService;
+	
+	@Autowired
+	private IClienteService cService;
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -43,8 +53,12 @@ public class PedidoController {
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistroPedido(Model model) {
 		model.addAttribute("listaDetalles", dService.listar());
+		model.addAttribute("listaRepartidor",rService.listar());
+		model.addAttribute("listaCliente", cService.listar());
 		
 		model.addAttribute("detalle", new Detalle());
+		model.addAttribute("repartidor", new Repartidor());
+		model.addAttribute("cliente", new Cliente());
 		model.addAttribute("pedido", new Pedido());
 		return "pedido";
 	}
@@ -54,6 +68,8 @@ public class PedidoController {
 		if (binRes.hasErrors())
 		{ 
 			model.addAttribute("listaDetalles", dService.listar());
+			model.addAttribute("listaRepartidor",rService.listar());
+			model.addAttribute("listaCliente", cService.listar());
 			return "pedido";
 		}
 		else {
@@ -74,7 +90,9 @@ public class PedidoController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/pedido/listar";
 		}else {
-			model.addAttribute("listaDetalles",dService.listar());
+			model.addAttribute("listaDetalles", dService.listar());
+			model.addAttribute("listaRepartidor",rService.listar());
+			model.addAttribute("listaCliente", cService.listar());
 			if(objPedido.isPresent())
 				objPedido.ifPresent(o->model.addAttribute("PEDIDO",o));
 			return "pedido";

@@ -45,14 +45,16 @@ public class Reclamo implements Serializable{
 
 	public Reclamo() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Reclamo(int idReclamo, String detailReclamo, Date detailDateReclamo, Cliente cliente) {
+	public Reclamo(int idReclamo, String detailReclamo, Date detailDateReclamo, Cliente cliente, Local local) {
 		super();
 		this.idReclamo = idReclamo;
 		this.detailReclamo = detailReclamo;
 		this.detailDateReclamo = detailDateReclamo;
 		this.cliente = cliente;
+		this.local = local;
 	}
 
 	public int getIdReclamo() {
@@ -86,5 +88,16 @@ public class Reclamo implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+
+	
+	
 
 }

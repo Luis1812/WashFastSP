@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.lang.String;
 
 @Entity
 @Table(name="usuario")
@@ -120,6 +121,67 @@ public class Usuario implements Serializable{
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((contrasena == null) ? 0 : contrasena.hashCode());
+		result = prime * result + ((correo == null) ? 0 : correo.hashCode());
+		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
+		result = prime * result + idUsuario;
+		result = prime * result + ((nombreCompleto == null) ? 0 : nombreCompleto.hashCode());
+		result = prime * result + sexo;
+		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (contrasena == null) {
+			if (other.contrasena != null)
+				return false;
+		} else if (!contrasena.equals(other.contrasena))
+			return false;
+		if (correo == null) {
+			if (other.correo != null)
+				return false;
+		} else if (!correo.equals(other.correo))
+			return false;
+		if (direccion == null) {
+			if (other.direccion != null)
+				return false;
+		} else if (!direccion.equals(other.direccion))
+			return false;
+		if (idUsuario != other.idUsuario)
+			return false;
+		if (nombreCompleto == null) {
+			if (other.nombreCompleto != null)
+				return false;
+		} else if (!nombreCompleto.equals(other.nombreCompleto))
+			return false;
+		if (sexo != other.sexo)
+			return false;
+		if (telefono == null) {
+			if (other.telefono != null)
+				return false;
+		} else if (!telefono.equals(other.telefono))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
 	}
 
 }

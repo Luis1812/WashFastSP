@@ -10,12 +10,17 @@
 
 		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 				rel="stylesheet" id="bootstrap-css">
+
 		</link>
+
 
 		<script
 			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-		</script>	
+		</script>
+
+		
 		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
 	</head>
 
 
@@ -28,33 +33,60 @@
 					<label for="idPedido">ID:</label>
 					<input type="text" class="form-control" th:field="*{idPedido}"></input>
 					
-					<div class="form-group">
+					<label>
 					
-						<label for="fechaPedido">FECHA DE PEDIDO:</label>
-						<input type="date" class="form-control" th:field="*{fechaPedido}" id="fechaPedido"></input>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaPedido')}"
-						th:errors="*{fechaPedido}">
+					
+					</label>
+					
+					<div class="form-group row">
+						<label> FECHA DE PEDIDO </label>
+						<label for="fechaPedido"> </label>
+						<div class="col-sm-6">
+						<input type ="date" th:field="*{fechaPedido}"class="form-control"
+						th:errorclass="'form-control alert-danger'" /><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('fechaPedido')}" th:errors="*{fechaPedido}"> </small>
 						</div>
-										
-						<label for="fechaEntrega">FECHA DE ENTREGA:</label>
-						<input type="date" class="form-control" th:field="*{fechaEntrega}" id="fechaEntrega"></input>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaEntrega')}"
-						th:errors="*{fechaEntrega}">
+					</div>
+						
+						
+					<div class="form-group row">
+						<label> FECHA DE ENTREGA </label>
+						<label for="fechaEntrega"> </label>
+						<div class="col-sm-6">
+						<input type ="date" th:field="*{fechaEntrega}"class="form-control"
+						th:errorclass="'form-control alert-danger'" /><small class="form-text text-danger"
+						th:if="${#fields.hasErrors('fechaEntrega')}" th:errors="*{fechaEntrega}"> </small>
 						</div>
-									
-						<label for="cliente">CLIENTE:</label>
+					</div>
+					
+					<label for="cantidad">Cantidad</label> 
+						<input type="text" class="form-control" th:field="*{cantidad}" id="cantidad"></input> 
+ 						<div class="alert alert-danger" th:if="${#fields.hasErrors('cantidad')}"
+ 						th:errors="*{cantidad}"> 
+						</div>
+						
+					<div class="form-group">	
+						<label for="cliente" class="col-sm-2 col-form-label">CLIENTE:</label>
 						<select class= "form-control" th:field= "*{cliente.idCliente}">
-							<option th:each="c: ${listaClientes}" th:value= "${c.idCliente}" th:text="${c.idCliente}"
-									th:selected="(${c.idCliente}== *{c.idCliente})">
+							<option th:each="c: ${listaCliente}" th:value= "${c.idCliente}" th:text="${c.idCliente}"
+									th:selected="(${c.idCliente}== *{cliente.idCliente})">
 							</option>
 						</select>
-											
-						<label for="monto">MONTO:</label>
-						<input type="number" class="form-control" th:field="*{monto}" id="monto"></input>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('monto')}"
-						th:errors="*{monto}">
-						</div>
-	
+						
+						<label for="detalle" class="col-sm-2 col-form-label"></label> DETALLE:
+						<select class= "from-control" th:field= "*{detalle.idDetalle}">
+						<option th:each="d: ${listaDetalles}" th:value= "${d.idDetalle}" th:text="${d.idDetalle}" 
+						th:selected="(${d.idDetalle}== *{detalle.idDetalle})">
+						</option>
+						</select>		
+						
+						<label for="repartidor" class="col-sm-2 col-form-label"></label> REPARTIDOR:
+						<select class= "from-control" th:field= "*{repartidor.idRepartidor}">
+						<option th:each="r: ${listaRepartidor}" th:value= "${r.idRepartidor}" th:text="${r.idRepartidor}" 
+						th:selected="(${r.idRepartidor}== *{repartidor.idRepartidor})">
+						</option>
+						</select>
+													
 					</div>
 					
 				</div>

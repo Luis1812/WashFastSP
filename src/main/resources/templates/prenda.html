@@ -26,15 +26,21 @@
 		<form th:action="@{/prenda/registrar}" method="post" th:object="${prenda}">
 			<div class="form-group">
 				<label for="idprenda">ID:</label> 
-				<input type="text" class="form-control" th:field="*{idPrenda}" disabled="false"></input>
+				<input type="text" class="form-control" th:field="*{idPrenda}" ></input>
 
 				<div class="form-group">
-					<label for="nombre">TIPO:</label> 
+					<label for="nombre">PRENDA:</label> 
 					<input type="text" class="form-control" th:field="*{namePrenda}" id="nombre"></input>
 
+				<label for="montoPrenda">MONTO DE PRENDA:</label> 
+					<input type="text" class="form-control" th:field="*{montoPrenda}" id="montoPrenda"></input>
+				
+				
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('namePrenda')}" th:errors="*{namePrenda}">
 					</div>
+					
+					
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Aceptar</button>

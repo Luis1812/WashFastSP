@@ -25,6 +25,7 @@ public class Administrador implements Serializable {
 
 	public Administrador() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Administrador(int idAdministrador, Usuario usuario) {

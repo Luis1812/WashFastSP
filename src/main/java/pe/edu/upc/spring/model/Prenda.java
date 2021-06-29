@@ -20,15 +20,19 @@ public class Prenda implements Serializable{
 	
 	@Column(name="nombrePrenda", length=60, nullable=false)
 	private String namePrenda;
+	
+	@Column(name="montoPrenda", nullable=false)
+	private int montoPrenda;
 
 	public Prenda() {
 		super();
 	}
 
-	public Prenda(int idPrenda, String namePrenda) {
+	public Prenda(int idPrenda, String namePrenda, int montoPrenda) {
 		super();
 		this.idPrenda = idPrenda;
 		this.namePrenda = namePrenda;
+		this.montoPrenda = montoPrenda;
 	}
 
 	public int getIdPrenda() {
@@ -46,4 +50,14 @@ public class Prenda implements Serializable{
 	public void setNamePrenda(String namePrenda) {
 		this.namePrenda = namePrenda;
 	}
+
+	public int getMontoPrenda() {
+		return montoPrenda;
+	}
+
+	public void setMontoPrenda(int montoPrenda) {
+		this.montoPrenda = montoPrenda;
+	}
+
+
 }

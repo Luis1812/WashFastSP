@@ -20,32 +20,28 @@ public class Detalle implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDetalle;
 	
-	@Column(name="cantidad", nullable=false)
-	private int cantidad;
-	
 	@ManyToOne
 	@JoinColumn(name="idPrenda", nullable = false)
 	private Prenda prenda;
-
+	
 	@ManyToOne
-	@JoinColumn(name="idServicio", nullable = false)
+	@JoinColumn(name="idServicio", nullable = false )
 	private Servicio servicio;
-	
-	@ManyToOne
-	@JoinColumn(name="idPedido", nullable = false)
-	private Pedido pedido;
-	
+
+	@Column(name="montod", nullable=false)
+	private double monto;
+
 	public Detalle() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Detalle(int idDetalle, Prenda prenda, int cantidad, Servicio servicio, Pedido pedido) {
+	public Detalle(int idDetalle, Prenda prenda, Servicio servicio, double monto) {
 		super();
 		this.idDetalle = idDetalle;
 		this.prenda = prenda;
-		this.cantidad = cantidad;
 		this.servicio = servicio;
-		this.pedido = pedido;
+		this.monto = monto;
 	}
 
 	public int getIdDetalle() {
@@ -64,14 +60,6 @@ public class Detalle implements Serializable{
 		this.prenda = prenda;
 	}
 
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
 	public Servicio getServicio() {
 		return servicio;
 	}
@@ -80,11 +68,14 @@ public class Detalle implements Serializable{
 		this.servicio = servicio;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
+	public double getMonto() {
+		return monto;
 	}
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
+
+	
+
 }

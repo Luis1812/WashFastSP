@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.spring.model.Detalle;
-import pe.edu.upc.spring.model.Pedido;
 import pe.edu.upc.spring.model.Prenda;
 import pe.edu.upc.spring.model.Servicio;
 import pe.edu.upc.spring.service.IDetalleService;
-import pe.edu.upc.spring.service.IPedidoService;
 import pe.edu.upc.spring.service.IPrendaService;
 import pe.edu.upc.spring.service.IServicioService;
 
@@ -35,9 +33,6 @@ public class DetalleController {
 	
 	@Autowired
 	private IServicioService sService;
-	
-	@Autowired
-	private IPedidoService pService;
 	
 	@RequestMapping("/bienvenido")
 	public String irPaginaBienvenida() {
@@ -55,11 +50,9 @@ public class DetalleController {
 		//
 		model.addAttribute("listaPrendas", prService.listar());
 		model.addAttribute("listaServicios", sService.listar());
-		model.addAttribute("listaPedidos", pService.listar());
 		//
 		model.addAttribute("prenda", new Prenda());
 		model.addAttribute("servicio", new Servicio());
-		model.addAttribute("pedido", new Pedido());
 		model.addAttribute("detalle", new Detalle());
 	
 		return "detalle";
@@ -73,7 +66,6 @@ public class DetalleController {
 			//
 			model.addAttribute("listaPrendas", prService.listar());
 			model.addAttribute("listaServicios", sService.listar());
-			model.addAttribute("listaPedidos", pService.listar());
 			//
 			return "detalle";
 		}
@@ -99,7 +91,6 @@ public class DetalleController {
 			//
 			model.addAttribute("listaPrendas", prService.listar());
 			model.addAttribute("listaServicios", sService.listar());
-			model.addAttribute("listaPedidos", pService.listar());
 			//
 			if(objDetalle.isPresent())
 				objDetalle.ifPresent(o->model.addAttribute("detalle",o));

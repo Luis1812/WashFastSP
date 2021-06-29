@@ -63,24 +63,4 @@ public class ClienteServiceImpl implements IClienteService {
 		return cCliente.findById(idCliente);
 	}
 
-//	@Override
-//	@Transactional
-//	public List<Pet> buscarNombre(String namePet) {
-//		return dPet.buscarNombre(namePet);
-//	}
-//
-//	@Override
-//	@Transactional
-//	public List<Pet> buscarRaza(String nameRace) {
-//		return dPet.buscarNombre(nameRace);
-//	}
-//
-//	@Override
-//	@Transactional
-//	public List<Pet> buscarDueno(String nameDueno) {
-//		return dPet.buscarPropietario(nameDueno);
-//	}
-//	
-//	
-//	
 }

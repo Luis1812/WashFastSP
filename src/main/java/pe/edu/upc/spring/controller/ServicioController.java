@@ -60,9 +60,7 @@ public class ServicioController {
 	}
 	
 	@RequestMapping("/modificar/{id}")
-	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir)
-		throws ParseException
-	{
+	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
 		Optional<Servicio> objServicio = sService.listarId(id);
 		if(objServicio == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
