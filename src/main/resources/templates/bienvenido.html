@@ -27,17 +27,58 @@
 
 
 	<body>
+	
 		<div th:replace="fragments/header :: header"></div>
 		<div class="container">
-			<form id="myform">
-				<div class="row clearfix">
-					<div class="col-md-12 column" align="center">
-					<img th:src="@{/imagenes/WashFast.jpeg}" width="600" height="600" alt="logo" align="middle">
-					</img>
-					</div>
-				</div>
-			</form>
+		<div class="row featurette">
+		<br>
+		<br>
+          <div class="col-md-7">
+            <h2 class="featurette-heading">WashFast<span class="text-muted"></span></h2>
+            <p class="lead" style="text-align:justify">Somos una empresa que brinda servicios de lavandería a los ciudadanos de Lima. <br>Actualmente por el tema de la pandemia hemos cambiado nuestra forma de trabajar implementando un servicio a domicilio donde usted, nuestro cliente, tendrá la facilidad de lavar sus prendas sin necesidad de salir de casa. </p>
+          </div>
+          <div class="col-md-5">
+            <img src="/imagenes/WashFast.jpg" class="card-img-top" style="height: 400px">
+          </div>
+        </div>
 		</div>
+		<main role="main">
+      
+      <div class="container marketing">
+
+        <!-- START THE FEATURETTES -->
+		<br>
+		<br>
+		<br>
+        <div style="text-align:center">
+          <h1>Nosotros</h1>
+        </div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Los integrantes</h2>
+              <p class="lead">El equipo WashFastEstá conformado por cuatro alumnos del curso de Programación Web</p>
+              
+              <ul class="lead">
+                <li>Rafael Francisco Arone Mendoza</li>
+                <li>Diego Alonso García Lévano</li>
+                <li>Moisés Jacob Reyna Arista</li>
+                <li>Luis Alberto Castillo Cuyutupa</li>
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <img src="/imagenes/equipo.png" class="d-block w-100" alt="progra" style="height: 400px">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <!-- /END THE FEATURETTES -->
+      </div><!-- /.container -->
+    </main>
+		
 		<div th:replace="fragments/footer :: footer"></div>
 	</body>
   
