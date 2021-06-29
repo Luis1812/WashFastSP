@@ -32,7 +32,18 @@
 			<form id="myform">
 				<div class="row clearfix">
 					<div class="col-md-12 column" align="center">
-						<img th:src="@{/imagenes/WashFast.jpeg}" width="600" height="600" alt="logo" align="middle">
+						<h1 style="color:Gray;"> ¡Bienvenido! </h1>
+						
+						<div class="col-md-6 intro-info order-md-first order-last">
+							<h2 style="color:DodgerBlue;" align="left"> WashFast <br> <span style="color:Black;"> a tu servicio</span></h2>
+							<div>
+								<li class="active" style="color:DodgerBlue;" > <a th:href="@{/login}" >Iniciar Sesión</a></li>
+							</div>
+						</div>
+				       <div class="col-md-6 intro-img order-md-last order-first">
+				       		<img th:src="@{/imagenes/WashFast.jpeg}" alt="logo WashFast" style="width:700px;height:350px" class="img-fluid">
+				       </div>
+						
 						</img>
 					</div>
 				</div>
@@ -40,4 +51,5 @@
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</body>
+  
 </html>
